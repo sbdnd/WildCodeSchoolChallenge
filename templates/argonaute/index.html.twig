@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Argonaute index{% endblock %}
+
+{% block body %}
+    
+    <div class="container">
+
+        <h2>Ajouter un(e) Argonaute</h2>
+        <div class="row justify-content-center mt-4 mb-4">
+            {{ include('argonaute/_form.html.twig') }}
+        </div>
+
+        <section class="member-list">
+            <h2>Membres de l'équipage</h2>
+            <div class="row">
+                {% for argonaute in argonautes %}
+                    <div class="col-4 member-item">
+                        {{ argonaute.name }}
+                        {# <a href="{{ path('argonaute_show', {'id': argonaute.id}) }}">show</a> #}
+                        {# <a href="{{ path('argonaute_edit', {'id': argonaute.id}) }}">modifier</a> #}
+                    </div>
+                {% else %}
+                    <div class="col-4">
+                        <p>Il est temps de recruter des membres !!</p>
+                    </div>
+                {% endfor %}
+            </div>
+         </section>
+
+    </div>
+    
+    
+{% endblock %}
